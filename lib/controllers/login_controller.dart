@@ -6,6 +6,7 @@ import 'package:ada_cbt/providers/user_provider.dart';
 import 'package:ada_cbt/views/screens/auth/login.dart';
 import 'package:ada_cbt/views/screens/home/home.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -43,7 +44,9 @@ class LoginController extends GetxController{
       }
 
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -65,7 +68,9 @@ class LoginController extends GetxController{
         }
       }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -74,7 +79,9 @@ class LoginController extends GetxController{
       var userData = await UserProvider().getDetailUser(id);
       user.value = userData;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 }
