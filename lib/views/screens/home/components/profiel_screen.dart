@@ -1,45 +1,62 @@
+import 'package:ada_cbt/controllers/document_controller.dart';
+import 'package:ada_cbt/controllers/login_controller.dart';
 import 'package:ada_cbt/views/constants/colors.dart';
+import 'package:ada_cbt/views/screens/home/components/card_profile.dart';
+import 'package:ada_cbt/views/screens/waiting/waiting.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key, required this.userId});
+
+  final int userId;
+  final DocumentController documentController = Get.put(DocumentController());
+  final LoginController loginController = Get.put(LoginController());
+  String documentLink = '';
+
+  Future<void> _getData() async{
+    await documentController.getDocument(userId);
+    documentLink = documentController.document.value!.documentLink;
+
+    if(documentLink != ""){
+      try{
+        await launchUrl(
+            Uri.parse(documentLink),
+            mode: LaunchMode.externalApplication
+        );
+      } catch (e){
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+    } else {
+      Get.snackbar("Failed", "Dokumen tidak ada");
+    }
+  }
+
+  Future<void> _logout() async{
+    await loginController.logout();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GestureDetector(
-          onTap: (){},
-          child: Container(
-            margin: EdgeInsets.all(10.h),
-            padding: EdgeInsets.all(15.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.h),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                  offset: const Offset(1, 1), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.logout, color: kPrimaryColor,),
-                SizedBox(
-                  width: 10.h,
-                ),
-                const Expanded(
-                  child: Text(
-                    'Logout'
-                  ),
-                )
-              ],
-            ),
-          ),
+        CardProfile(
+            text: "Download Blanko",
+            icon: Icons.file_download,
+            onClick: () {
+                _getData();
+            }
+        ),
+        CardProfile(
+            text: "Logout",
+            icon: Icons.logout,
+            onClick: () {
+              _logout();
+            }
         ),
       ],
     );

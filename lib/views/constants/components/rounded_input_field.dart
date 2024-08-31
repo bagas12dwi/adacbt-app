@@ -2,14 +2,15 @@ import 'package:ada_cbt/views/constants/colors.dart';
 import 'package:ada_cbt/views/constants/components/text_field_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-class RoundedInputField extends StatelessWidget {
+class RoundedInputFieldAuth extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String>? onChanged;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
-  const RoundedInputField({
+  const RoundedInputFieldAuth({
     super.key,
     required this.hintText,
     this.icon = Icons.person,
@@ -35,6 +36,36 @@ class RoundedInputField extends StatelessWidget {
         ),
         keyboardType: keyboardType,
       ),
+    );
+  }
+}
+
+class RoundedInputField extends StatelessWidget {
+  final String hintText;
+  final IconData icon;
+  final ValueChanged<String>? onChanged;
+  final TextEditingController? controller;
+  final TextInputType? keyboardType;
+  const RoundedInputField({
+    super.key,
+    required this.hintText,
+    this.icon = Icons.person,
+    this.onChanged,
+    this.controller,
+    this.keyboardType = TextInputType.text
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      onChanged: onChanged,
+      cursorColor: kPrimaryColor,
+      controller: controller,
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: const OutlineInputBorder(),
+      ),
+      keyboardType: keyboardType,
     );
   }
 }
@@ -99,6 +130,37 @@ class DateInputField extends StatelessWidget {
   }
 }
 
+
+
+class RoundedInputTextArea extends StatelessWidget {
+  final String hintText;
+  final ValueChanged<String>? onChanged;
+  final TextEditingController? controller;
+  final TextInputType? keyboardType;
+
+  const RoundedInputTextArea({
+    super.key,
+    required this.hintText,
+    this.onChanged,
+    this.controller,
+    this.keyboardType = TextInputType.text
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      onChanged: onChanged,
+      cursorColor: kPrimaryColor,
+      controller: controller,
+      maxLines: null,
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: const OutlineInputBorder(),
+      ),
+    );
+  }
+}
+
 class RoundedInputPassword extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final TextEditingController? controller;
@@ -109,39 +171,41 @@ class RoundedInputPassword extends StatefulWidget {
 }
 
 class _RoundedInputPasswordState extends State<RoundedInputPassword> {
-  bool obscuredText = true;
+  RxBool obscuredText = true.obs;
 
   void changeObscuredText() {
-    if (obscuredText == true) {
-      obscuredText = false;
+    if (obscuredText.value == true) {
+      obscuredText.value = false;
     } else {
-      obscuredText = true;
+      obscuredText.value = true;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      child: TextField(
-        obscureText: obscuredText,
-        onChanged: widget.onChanged,
-        controller: widget.controller,
-        cursorColor: kPrimaryColor,
-        decoration: InputDecoration(
-          hintText: "Password",
-          icon: const Icon(
-            Icons.lock,
-            color: kPrimaryColor,
+      child: Obx(() {
+        return TextField(
+          obscureText: obscuredText.value,
+          onChanged: widget.onChanged,
+          controller: widget.controller,
+          cursorColor: kPrimaryColor,
+          decoration: InputDecoration(
+            hintText: "Password",
+            icon: const Icon(
+              Icons.lock,
+              color: kPrimaryColor,
+            ),
+            suffixIcon: IconButton(
+                icon: const Icon(
+                  Icons.visibility,
+                  color: kPrimaryColor,
+                ),
+                onPressed: changeObscuredText),
+            border: InputBorder.none,
           ),
-          suffixIcon: IconButton(
-              icon: const Icon(
-                Icons.visibility,
-                color: kPrimaryColor,
-              ),
-              onPressed: changeObscuredText),
-          border: InputBorder.none,
-        ),
-      ),
+        );
+      })
     );
   }
 }

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class UserProvider {
   Future<User> getDetailUser(int id) async {
-    final response = await http.get(Uri.parse("${Api.baseUrl}/getDetailAkun/$id"));
+    final response = await http.get(Uri.parse("${Api.baseUrl}/getDetail/$id"));
     if(response.statusCode == 200) {
       Map<String, dynamic> responseData = json.decode(response.body);
       if(responseData != null) {

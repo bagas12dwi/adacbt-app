@@ -1,22 +1,27 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:ada_cbt/helpers/api.dart';
+import 'package:ada_cbt/helpers/shared_prefs.dart';
 import 'package:ada_cbt/models/user.dart';
 import 'package:ada_cbt/providers/user_provider.dart';
-import 'package:ada_cbt/views/screens/auth/login.dart';
 import 'package:ada_cbt/views/screens/home/home.dart';
+import 'package:ada_cbt/views/screens/splash/splash.dart';
+import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
 
 class LoginController extends GetxController{
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController namaController;
+  late TextEditingController phoneController;
   var status_code;
   var user = Rxn<User>();
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() {
@@ -24,57 +29,91 @@ class LoginController extends GetxController{
     emailController = TextEditingController();
     passwordController = TextEditingController();
     namaController = TextEditingController();
+    phoneController = TextEditingController();
   }
 
-  void login() async {
+  void setUser(User newUser) {
+    user.value = newUser;
+  }
+
+  checkUser() async{
+    var users = await SharedPref().getUser();
+    if(users != null){
+      Get.off(() => Home(id: json.decode(users)['id']));
+    } else {
+      Get.off(() => const Splash());
+    }
+  }
+
+  Future<void> login(String email, String password) async {
     try {
-      var user = User(email: emailController.text, password: passwordController.text);
-      var response = await http.post(Uri.parse('${Api.baseUrl}/login'),
-          body: json.encode(user.toJson()),
-          headers: {'Content-type':'application/json'}
-      );
-      if (response.statusCode == 200){
-        var responseData = json.decode(response.body);
-        status_code = responseData['status_code'];
-        if(status_code == 200){
-          return Get.offAll( () => Home(id: responseData['data']['id'],) );
-        } else {
-          return status_code;
-        }
-      }
+      // Make API call to login
+      // Assume you have Dio configured and the necessary imports
 
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
+      Dio dio = Dio();
+
+      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
+        client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+        return client;
+      };
+
+      var response = await dio.post(
+        '${Api.baseUrl}/login',
+        data: {
+          'email': email,
+          'password': password,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        var userData = response.data['data'][0];
+        User loggedInUser = User.fromJson(userData);
+        if(loggedInUser.isActive == 1) {
+          setUser(loggedInUser);
+          await SharedPref().storeUser(json.encode(loggedInUser));
+        }
+      } else {
+        // Handle login failure
+        throw Exception('Invalid credentials');
       }
+    } catch (e) {
+      // Handle error
+      print('Error during login: $e');
+      rethrow; // Rethrow the exception to let the UI handle it
     }
   }
 
-  void register() async {
+  Future<void> register(String email, String password, String fullName, String phoneNumber) async{
     try{
-      var user = User(email: emailController.text, password: passwordController.text, nama: namaController.text);
-      var response = await http.post(Uri.parse('${Api.baseUrl}/register'),
-          body: json.encode(user.toJson()),
-          headers: {'Content-type':'application/json'}
+      Dio dio = Dio();
+
+      var response = await dio.post(
+        '${Api.baseUrl}/register',
+        data: {
+          'email': email,
+          'password': password,
+          'full_name': fullName,
+          'phone_number': phoneNumber
+        }
       );
 
-      if(response.statusCode == 200) {
-        var responseData = json.decode(response.body);
-        status_code = responseData['status_code'];
-        if(status_code == 200){
-          return Get.offAll(() => Login());
-        } else {
-          return status_code;
+      if (response.statusCode == 200){
+        var userData = response.data['data'][0];
+        User registeredUser = User.fromJson(userData);
+        if(registeredUser.isActive == 1){
+          setUser(registeredUser);
+          await SharedPref().storeUser(json.encode(registeredUser));
         }
+      } else {
+        throw Exception('Invalid credentials');
       }
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+    } catch (e){
+      print('Error during login: $e');
+      rethrow;
     }
   }
 
-  void getDetail(int id) async {
+  Future<void> getDetail(int id) async {
     try {
       var userData = await UserProvider().getDetailUser(id);
       user.value = userData;
@@ -83,5 +122,10 @@ class LoginController extends GetxController{
         print(e);
       }
     }
+  }
+
+  Future<void> logout() async{
+    await SharedPref().removeUser();
+    Get.offAll(()=> Splash());
   }
 }

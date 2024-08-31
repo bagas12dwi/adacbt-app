@@ -1,35 +1,42 @@
-class User{
-  final int? id;
-  final String? nama;
-  final int? level;
-  final String email;
-  final String password;
+class User {
+  int? id;
+  String? fullName;
+  String email;
+  String? phoneNumber;
+  String? role;
+  String password;
+  int isActive;
 
   User({
     this.id,
-    this.nama,
-    this.level,
+    this.fullName,
     required this.email,
-    required this.password
+    required this.password,
+    this.phoneNumber,
+    this.role,
+    required this.isActive
   });
 
   factory User.fromJson(Map<String, dynamic> json){
     return User(
-        email: json['email'],
-        password: json['password'],
-        nama: json['nama'],
-        level: json['level'],
-        id: json['id']
+        id: (json['id'] ?? "") as int,
+        fullName: (json['full_name']??"") as String,
+        email: (json['email']??"")as String,
+        phoneNumber: (json['phone_number']??"")as String,
+        role: (json['role']??"")as String,
+        password: (json['password']??"")as String,
+        isActive: (json['is_active']??0) as int
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
+  Map<String, dynamic> toJson(){
+    return{
       'id': id,
-      'nama': nama,
-      'level': level,
+      'full_name': fullName,
       'email': email,
-      'password': password,
+      'phone_number': phoneNumber,
+      'password' : password
     };
   }
+
 }

@@ -4,35 +4,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCards extends StatelessWidget {
-  CustomCards({super.key, required this.name, required this.img});
+  const CustomCards({super.key, required this.name, required this.img, required this.press});
   final String name;
   final String img;
+  final GestureTapCallback press;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.h),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 1,
-            offset: const Offset(1, 1), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          _buildImage(),
-          SizedBox(
-            width: 10.h,
-          ),
-          Expanded(
-            child: buildInfo(),
-          )
-        ],
+    return GestureDetector(
+      onTap: press,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.h),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 1,
+              offset: const Offset(1, 1), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            _buildImage(),
+            SizedBox(
+              width: 10.h,
+            ),
+            Expanded(
+              child: buildInfo(),
+            )
+          ],
+        ),
       ),
     );
   }

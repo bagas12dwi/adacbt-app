@@ -37,7 +37,7 @@ class Splash extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                  "Selamat Datang Di ADA-CBT",
+                                  "Selamat Datang di ICBT for OCD",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16.h,
