@@ -25,8 +25,8 @@ class GoodDay extends StatelessWidget {
           child: Column(
             children: [
               const CardTerapi(
-                title: "Have a good day! Semangat untuk menghadapi rasa cemasmu",
-                text1: "Masukan dan evaluasi akan disampaikan dan dilaksanakan setiap minggu oleh terapis pada saat pelaksanaan exposure berdasarkan perkembangan kamu setelah mengerjakan tugas yang diberikan. Setelah kamu berhasil mengerjakan tugas di blangko exposure hingga selesai, kamu bisa mengisi Catatan Progress.",
+                title: "Have a good day! Semangat untuk tetap menerapkan teknik-teknik yang kamu dapatkan selama proses terapi.",
+                text1: "Masukan dan evaluasi akan disampaikan dan dilaksanakan oleh terapis pada saat pelaksanaan exposure berdasarkan perkembangan kamu setelah mengerjakan tugas yang diberikan. Setelah kamu berhasil mengerjakan tugas di blangko exposure hingga selesai, kamu bisa mengisi Catatan Progress.",
               ),
               SizedBox(height: 10.h,),
               Padding(

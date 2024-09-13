@@ -25,8 +25,18 @@ class RasaCemas extends StatelessWidget {
           child: Column(
             children: [
               const CardTerapi(
-                  text1: "Pada saat melaksanakan teknik ERP, kamu diminta untuk mengakses blangko di sini. Blangko tersebut sebagai panduan/prosedur untuk kamu melawan rasa takut dan keragu-raguan yang kamu alami di kehidupan sehari-hari. Kamu bisa mencatat perilaku pada blangko 4, serta mengukur tingkat kecemasan yang kamu alami saat melawan rasa takut pada blangko 5. Sebelum menghadapi dan melawan rasa takut atau keraguanmu, pastikan kamu sudah menerapkan teknik relaksasi.",
-                title: 'Lawan rasa cemasmu !',
+                  text1: "Pada saat melaksanakan teknik ERP, kamu dapat memulainya dengan menerapkan teknik relaksasi terlebih dahulu. Kemudian, kamu dapat mencatat progres harian kamu pada blangko 4 – Frekuensi perilaku kompulsif. Serta mengukur tingkat kecemasan yang kamu alami saat melaksanakan ERP di Blangko 5 – perubahan tingkat kecemasan",
+                title: 'Tahan diri kamu untuk tidak melakukan perilaku kompulsif atau berulang ya !',
+              ),
+              SizedBox(height: 10.h,),
+              Text(
+                '“Tidak apa-apa jika kamu merasa kesulitan dalam melaksanakan tugas ini. Semua butuh waktu untuk dapat terbiasa. Yang terpenting adalah kamu tetap berusaha dan menikmati prosesnya ya”.',
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: 18.h,
+                  color: kDark,
+                ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 10.h,),
               Padding(

@@ -25,9 +25,9 @@ class Terapi extends StatelessWidget {
           child: Column(
             children: [
               const AboutTerapi(
-                  text1: "Selamat, kamu telah berhasil merubah pemikiran negatifmu menjadi lebih positif dan proporsional!.",
-                  text2: "Saat ini, kamu sudah di tahap terapi perilaku atau yang disebut sebagai teknik Exposure with Respons Prevention (ERP). Teknik ini bertujuan agar kamu terbiasa menghadapi situasi yang membuatmu merasa takut, ragu-ragu, atau perasaan tidak puas kamu. Sehingga kamu bisa menjalani aktivitas sehari-hari dengan tenang, nyaman, dan bahagia.",
-                  text3: "Tugas kamu adalah melawan rasa takut atau keraguanmu yang kamu alami selama ini. Setelah berhasil untuk melawan perasaan tersebut, cobalah untuk menerapkannya dalam waktu 8 hari berturut-turut."),
+                  text1: "Selamat, kamu telah berhasil merubah pemikiran negatifmu menjadi lebih positif dan proporsional. Hal ini membuat tingkat pemikiran obsesif kamu juga berkurang loh.",
+                  text2: "Saat ini, kamu sudah di tahap terapi perilaku atau yang disebut sebagai teknik Exposure with Respons Prevention (ERP). Teknik ini bertujuan agar kamu terbiasa menghadapi situasi yang menimbulkan emosi negatif atau membuatmu merasa takut, ragu-ragu, cemas, gelisah, atau perasaan tidak puas kamu. Sehingga kamu bisa menjalani aktivitas sehari-hari dengan tenang, nyaman, dan bahagia.",
+                  text3: "Tugas kamu adalah melawan rasa takut, cemas, gelisah, atau keraguanmu yang kamu alami selama ini dengan cara tidak melakukan perilaku berulang yang biasanya kamu lakukan untuk menghilangkan emosi negatif tersebut. Setelah berhasil untuk menahan diri untuk tidak melakukan perilaku berulang, cobalah untuk menerapkannya dalam waktu 8 hari berturut-turut."),
               SizedBox(height: 10.h,),
               Padding(
                 padding: EdgeInsets.only(bottom: 20.h),

@@ -34,13 +34,37 @@ class AboutRestrukturisasi extends StatelessWidget {
                   fontSize: 16.h
               ),
             ),
+            Text(
+              "Ayo mulai untuk merubah pemikiran negatif menjadi lebih positif sehingga pemikiran obsesif atau pemikiran menekan dapat berkurang secara perlahan.",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.h
+              ),
+            ),
             SizedBox(height: 5.h,),
             const Text(
-              "Pada tahap ini kamu akan diajak untuk mampu mengubah pemikiran negatif menjadi pemikiran yang lebih positif dan proporsional dalam menghadapi sumber kecemasanmu selama ini. Namun, sebelumnya ada hal penting yang harus kamu ketahui tentang gejala Obsessive Compulsive Disorder yang sedang kamu alami. Yuk disimak!",
+              "Pada tahap ini, kamu diminta untuk menuliskan semua pikiran, emosi, dan perilaku negatif yang kamu alami selama ini. Untuk prosedur pengerjaannya, kamu dapat mengakses dan mengisi blangko 1 – identifikasi pemikiran negatif. ",
               textAlign: TextAlign.justify,
             ),
             const Text(
-              "Perlu diketahui bahwa pikiran, emosi, dan perilaku itu saling berkaitan satu sama lain.",
+              "Pada blangko 1, tersedia beberapa kolom diantaranya : ",
+              textAlign: TextAlign.justify,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20.h),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('1. Pemikiran/keyakinan negatif yang kamu alami selama ini',),
+                  Text('2. Tingkat keyakinan pada pemikiran/keyakinan dapat diisi dengan angka 1-100 sesuai dengan kondisi kamu',),
+                  Text('3. Kolom emosi dapat diisi dengan bagaimana perasaan kamu ketika munculnya pemikiran negatif',),
+                  Text('4. Perilaku seperti apa yang kamu lakukan selama ini ketika munculnya pemikiran dan emosi yang negatif',),
+                ],
+              ),
+            ),
+            SizedBox(height: 10.h,),
+            const Text(
+              'Setelah kamu berhasil mengerjakan tugas di blangko tersebut kamu bisa mengisi Catatan Progress.',
               textAlign: TextAlign.justify,
             ),
           ],

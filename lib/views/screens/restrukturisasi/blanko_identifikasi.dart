@@ -1,6 +1,7 @@
 import 'package:ada_cbt/controllers/document_controller.dart';
 import 'package:ada_cbt/views/constants/colors.dart';
 import 'package:ada_cbt/views/constants/components/rounded_button.dart';
+import 'package:ada_cbt/views/screens/restrukturisasi/components/card_tugas_rumah.dart';
 import 'package:ada_cbt/views/screens/restrukturisasi/components/kasus_card.dart';
 import 'package:ada_cbt/views/screens/restrukturisasi/progres_restrukturisasi.dart';
 import 'package:flutter/foundation.dart';
@@ -56,10 +57,7 @@ class BlankoIdentifikasi extends StatelessWidget {
                   kasus: "Pada tahap ini, kamu diminta untuk menuliskan semua pikiran, emosi, dan perilaku negatif yang kamu alami selama ini. Untuk prosedur pengerjaannya, kamu dapat mengakses dan mengisi blangko 1 identifikasi pemikiran negatif di sini. Setelah kamu berhasil mengerjakan tugas di blangko tersebut kamu bisa mengisi Catatan Progress "
               ),
               SizedBox(height: 10.h),
-              const KasusCard(
-                  title: "Tugas Rumah",
-                  kasus: "Setalah melakukan identifikasi pemikiran negatif yang kamu alami selama ini. Kamu diminta untuk menyusun kembali pemikiran tersebut di blangko 2. Kemudian untuk menulis perubahan pemikiran negatifmu menjadi pemikiran yang lebih positif dan proporsional, tingkat keyakinan, emosi, perilaku, serta realita yang kamu dapat setelah berusaha merubah pola pikir kamu di blangko 3. Kamu dapat mengerjakan tugas ini selama 7 hari berturut-turut sesuai situasi yang kamu hadapi di keseharian kamu. Untuk lebih jelasnya, kamu dapat mengakses blangko restrukturisasi kognitif di sini."
-              ),
+              const CardTugasRumah(),
               RoundedButton(
                   text: "Download Blanko",
                   color: kPrimaryColor,
