@@ -4,6 +4,7 @@ import 'package:ada_cbt/helpers/api.dart';
 import 'package:ada_cbt/models/psikoedukasi_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class PsikoedukasiController extends GetxController{
@@ -46,7 +47,9 @@ class PsikoedukasiController extends GetxController{
         throw Exception('failed store data');
       }
     } catch (e) {
-      print('Error during save data: $e');
+      if (kDebugMode) {
+        print('Error during save data: $e');
+      }
       rethrow;
     }
   }

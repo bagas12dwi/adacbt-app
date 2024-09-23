@@ -32,10 +32,12 @@ class AboutTerapi extends StatelessWidget {
               text1,
               textAlign: TextAlign.justify,
             ),
+            SizedBox(height: 10.h,),
             Text(
               text2,
               textAlign: TextAlign.justify,
             ),
+            SizedBox(height: 10.h,),
             Text(
               text3,
               textAlign: TextAlign.justify,

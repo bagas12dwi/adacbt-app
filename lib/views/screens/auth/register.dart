@@ -3,7 +3,6 @@ import 'package:ada_cbt/models/user.dart';
 import 'package:ada_cbt/views/constants/colors.dart';
 import 'package:ada_cbt/views/constants/components/rounded_button.dart';
 import 'package:ada_cbt/views/constants/components/rounded_input_field.dart';
-import 'package:ada_cbt/views/screens/home/home.dart';
 import 'package:ada_cbt/views/screens/waiting/waiting.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

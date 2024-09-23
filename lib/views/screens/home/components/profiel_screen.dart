@@ -1,8 +1,6 @@
 import 'package:ada_cbt/controllers/document_controller.dart';
 import 'package:ada_cbt/controllers/login_controller.dart';
-import 'package:ada_cbt/views/constants/colors.dart';
 import 'package:ada_cbt/views/screens/home/components/card_profile.dart';
-import 'package:ada_cbt/views/screens/waiting/waiting.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

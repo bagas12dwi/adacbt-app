@@ -23,9 +23,13 @@ class HandlingOcd extends StatelessWidget {
                   fontSize: 16.h
               ),
             ),
+            const Text(
+              "Internet Cognitive Behavior Therapy merupakan suatu intervensi yang mengacu pada konsep dasar pendekatan Cognitive Behavior yang didalamnya mencakup Restrukturisasi Kognitif dan Terapi Perilaku.",
+              textAlign: TextAlign.justify,
+            ),
             SizedBox(height: 5.h,),
             const Text(
-              "Cognitive Behavior Therapy atau CBT merupakan suatu intervensi yang melatih keterampilan seseorang dalam menghadapi permasalahan psikologis yang berkaitan dengan pikiran, perasaan, serta perilakunya di kehidupan sehari-hari. CBT telah terbukti efektif dalam menangani berbagai gangguan psikologis, salah satunya adalah penanganan terhadap orang yang mengalami OCD. Pada aplikasi ini kamu akan melaksanakan empat tahap CBT, yaitu psikoedukasi, latihan relaksasi, restrukturisasi kognitif, dan terapi perilaku.",
+              "Intervensi ini akan melatih keterampilan seseorang dalam menghadapi permasalahan psikologis yang berkaitan dengan pikiran, perasaan, serta perilakunya di kehidupan sehari-hari. I-CBT telah terbukti efektif dalam menangani berbagai permasalahan psikologis, salah satunya adalah penanganan terhadap orang yang mengalami OCD. Pada aplikasi ini, kamu akan melaksanakan beberapa tahap terapi yaitu Psikoedukasi, Latihan Relaksasi, Restrukturisasi Kognitif, dan Terapi Perilaku.",
               textAlign: TextAlign.justify,
             ),
           ],

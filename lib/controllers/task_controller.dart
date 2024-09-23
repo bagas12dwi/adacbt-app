@@ -1,5 +1,6 @@
 import 'package:ada_cbt/models/task_model.dart';
 import 'package:ada_cbt/providers/task_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class TaskController extends GetxController {
@@ -10,7 +11,9 @@ class TaskController extends GetxController {
       var taskData = await TaskProvider().getTask(userId);
       task.value = taskData;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 }

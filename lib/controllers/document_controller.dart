@@ -1,5 +1,6 @@
 import 'package:ada_cbt/models/document_model.dart';
 import 'package:ada_cbt/providers/document_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class DocumentController extends GetxController{
@@ -10,7 +11,9 @@ class DocumentController extends GetxController{
       var documentData = await DocumentProvider().getDocument(userId);
       document.value = documentData;
     } catch (e){
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 }

@@ -25,8 +25,8 @@ class RasaCemas extends StatelessWidget {
           child: Column(
             children: [
               const CardTerapi(
-                  text1: "Pada saat melaksanakan teknik ERP, kamu dapat memulainya dengan menerapkan teknik relaksasi terlebih dahulu. Kemudian, kamu dapat mencatat progres harian kamu pada blangko 4 – Frekuensi perilaku kompulsif. Serta mengukur tingkat kecemasan yang kamu alami saat melaksanakan ERP di Blangko 5 – perubahan tingkat kecemasan",
-                title: 'Tahan diri kamu untuk tidak melakukan perilaku kompulsif atau berulang ya !',
+                title: 'Tahan diri kamu untuk tidak melakukan perilaku kompulsif atau berulang ya',
+                text1: "Pada saat melaksanakan teknik ERP, kamu dapat memulainya dengan menerapkan teknik relaksasi terlebih dahulu. Kemudian, kamu dapat mencatat progres harian kamu pada blangko 4 – Frekuensi perilaku kompulsif. Serta mengukur tingkat kecemasan yang kamu alami saat melaksanakan ERP di Blangko 5 – perubahan tingkat kecemasan",
               ),
               SizedBox(height: 10.h,),
               Text(

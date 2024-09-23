@@ -65,7 +65,7 @@ class AboutRelaksasi extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               const Text(
-                "4. Kemudian hembuskan nafas dari hidung secara perlahan,sebanyak 8 hitungan (out, 2,3,4,5,6,7,8) ",
+                "4. Kemudian hembuskan nafas melalui mulut secara perlahan,sebanyak 8 hitungan (out, 2,3,4,5,6,7,8) ",
                 textAlign: TextAlign.justify,
               ),
               const Text(

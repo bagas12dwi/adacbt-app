@@ -9,12 +9,8 @@ class UserProvider {
     final response = await http.get(Uri.parse("${Api.baseUrl}/getDetail/$id"));
     if(response.statusCode == 200) {
       Map<String, dynamic> responseData = json.decode(response.body);
-      if(responseData != null) {
-        return User.fromJson(responseData['data']);
-      } else {
-        throw Exception('invalid data parse');
-      }
-    } else {
+      return User.fromJson(responseData['data']);
+        } else {
       throw Exception('failed');
     }
   }

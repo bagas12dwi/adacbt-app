@@ -78,7 +78,9 @@ class LoginController extends GetxController{
       }
     } catch (e) {
       // Handle error
-      print('Error during login: $e');
+      if (kDebugMode) {
+        print('Error during login: $e');
+      }
       rethrow; // Rethrow the exception to let the UI handle it
     }
   }
@@ -108,7 +110,9 @@ class LoginController extends GetxController{
         throw Exception('Invalid credentials');
       }
     } catch (e){
-      print('Error during login: $e');
+      if (kDebugMode) {
+        print('Error during login: $e');
+      }
       rethrow;
     }
   }
@@ -126,6 +130,6 @@ class LoginController extends GetxController{
 
   Future<void> logout() async{
     await SharedPref().removeUser();
-    Get.offAll(()=> Splash());
+    Get.offAll(()=> const Splash());
   }
 }

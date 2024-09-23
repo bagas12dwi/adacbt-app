@@ -39,12 +39,12 @@ class Home extends StatelessWidget {
           // Data loaded, build your UI
           final MyController myController = Get.put(MyController(userController: userController, userId: id));
 
-          return Obx(() => SafeArea(
-            child: RefreshIndicator(
-              onRefresh: _loadData,
-              child: Scaffold(
-                backgroundColor: kLight,
-                body: CustomScrollView(
+          return Obx(() => RefreshIndicator(
+            onRefresh: _loadData,
+            child: Scaffold(
+              backgroundColor: kLight,
+              body: SafeArea(
+                child: CustomScrollView(
                   slivers: [
                     SliverAppBar(
                       backgroundColor: kLight,
@@ -66,16 +66,16 @@ class Home extends StatelessWidget {
                     ),
                   ],
                 ),
-                bottomNavigationBar: CurvedNavigationBar(
-                  items: const [
-                    Icon(Icons.home, color: kLight),
-                    Icon(Icons.person_pin_rounded, color: kLight,)
-                  ],
-                  index: 0,
-                  backgroundColor: kLight,
-                  color: kPrimaryColor,
-                  onTap: (index) => myController.onTapped(index),
-                ),
+              ),
+              bottomNavigationBar: CurvedNavigationBar(
+                items: const [
+                  Icon(Icons.home, color: kLight),
+                  Icon(Icons.person_pin_rounded, color: kLight,)
+                ],
+                index: 0,
+                backgroundColor: kLight,
+                color: kPrimaryColor,
+                onTap: (index) => myController.onTapped(index),
               ),
             ),
           ));

@@ -4,6 +4,7 @@ import 'package:ada_cbt/helpers/api.dart';
 import 'package:ada_cbt/models/relaksasi_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class RelaksasiController extends GetxController {
@@ -45,7 +46,9 @@ class RelaksasiController extends GetxController {
         throw Exception('Failed Store Data');
       }
     } catch (e) {
-      print('Error during save data: $e');
+      if (kDebugMode) {
+        print('Error during save data: $e');
+      }
       rethrow;
     }
   }

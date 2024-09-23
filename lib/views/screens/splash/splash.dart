@@ -37,7 +37,7 @@ class Splash extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                  "Selamat Datang di ICBT for OCD",
+                                  "Selamat Datang di Ada ICBT",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16.h,
@@ -49,12 +49,12 @@ class Splash extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       const Text(
-                                        "Suatu program Internet Cognitive Behavior Therapy (I-CBT) yang siap membantu kamu untuk mengatasi permasalahan Obsessive Compulsive Disorder (OCD) yang kamu alami. Aplikasi iniakan membantu kamu memahami tentang CBT, OCD dan prosedur terapi yang akan kamu jalani.",
+                                        "Suatu program intervensi psikologis dengan pendekatan Cognitive Behavior Therapy (CBT) yang siap membantu kamu untuk menangani permasalahan Obsessive Compulsive Disorder (OCD) yang kamu alami.",
                                         textAlign: TextAlign.center,
                                       ),
                                       SizedBox(height: 10.h,),
                                       const Text(
-                                        "Yuk, secara perlahan kamu akan terbiasa untuk menghadapi ketakutanmu!",
+                                        "Aplikasi ini akan memberikan kamu informasi-informasi terkait OCD dan memberikan penanganan untuk mengurangi gejala OCD yang sedang dialami.",
                                         textAlign: TextAlign.center,
                                       ),
                                     ],

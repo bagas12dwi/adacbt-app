@@ -4,6 +4,7 @@ import 'package:ada_cbt/helpers/api.dart';
 import 'package:ada_cbt/models/restrukturisasi_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class RestrukturisasiController extends GetxController {
@@ -46,7 +47,9 @@ class RestrukturisasiController extends GetxController {
         throw Exception('Failed save data');
       }
     } catch (e) {
-      print('Error during save data : $e');
+      if (kDebugMode) {
+        print('Error during save data : $e');
+      }
       rethrow;
     }
   }
